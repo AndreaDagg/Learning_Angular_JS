@@ -6,7 +6,7 @@
   ### Java Script Section
   The "JavaScript_Learning" folder contains the code for learning the JS language. 
    <ol>
-    <li><details open="open">
+    <li><details>
             <summary><strong> Js_section_1</strong></summary> 
                       <ol>
                         <li>  node.Js</li>
