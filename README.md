@@ -1,6 +1,6 @@
 <h1> Learning_JavaScript </h1>
 <ol>
-  <li> Course 1 </li>
+  <li> <strong> Course 1 </strong></li>
   <ol>
     <li>  node.Js</li>
      <li> Variables </li>
