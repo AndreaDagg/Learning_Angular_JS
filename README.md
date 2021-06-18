@@ -1,7 +1,7 @@
 <h1> Learning Angular </h1>
 
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary>Learning JavaScript</summary>
    <ol>
     <li> <strong> Course 1 </strong>
             <ol>
