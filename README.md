@@ -2,7 +2,7 @@
 
 <details open="open">
   <summary>Learning JavaScript</summary>
-  ##Java Script Section
+  ## Java Script Section
   In questa sezione è presente il codice per imparare il linguaggio JS
    <ol>
     <li> <strong> Section 1 </strong>
