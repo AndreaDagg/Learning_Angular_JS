@@ -3,7 +3,7 @@
 <details open="open">
   <summary>Learning JavaScript</summary>
    <ol>
-    <li> <strong> Course 1 </strong>
+    <li> <strong> Section 1 </strong>
             <ol>
               <li>  node.Js</li>
                <li> Variables </li>
