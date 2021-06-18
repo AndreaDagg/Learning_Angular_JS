@@ -1,11 +1,10 @@
 <h1> Learning Angular </h1>
 
 <details open="open">
-  <summary>Learning JavaScript</summary>
+  <summary>JavaScript_Learning</summary>
   
-  ## Java Script Section
-  
-  In questa sezione è presente il codice per imparare il linguaggio JS
+  ### Java Script Section
+  In the folder "JavaScript_Learning" there is the code to learn the JS language.
    <ol>
     <li> <strong> Section 1 </strong>
             <ol>
