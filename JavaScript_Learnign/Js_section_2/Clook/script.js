@@ -47,7 +47,7 @@ function updateValue(key, value) {
     console.log("Detect Changes");
     let input = "#" + key + "-input"; //id dello span costruiamo la stringa
     $(input).change(function () {
-        updateValue(key, $(input).val());
+        updateValue(key, $(input).val()); //get value from inpout id
     });
     $(input).keyup(function () {
         updateValue(key, $(input).val());
@@ -101,12 +101,11 @@ function pauseTimer() {
  * @buttonsArray: array di array dove ogni elemento è true o false ["start", true] */
 function buttonManager(...buttonsArray) {
     for (let i = 0; i < buttonsArray.length; i++) {
-        let button = "#" + buttonsArray[i][0] + "-button";
-        if (buttonsArray[i][1]) {
+        let button = "#" + buttonsArray[i][0] + "-button"; //id string
+        if (buttonsArray[i][1]) { //value
             $(button).removeAttr("disabled")
         } else {
-
-            $(button).attr("disabled", "disabled")
+            $(button).attr("disabled", "disabled") //jQuerty per disabilitare il bottone
         }
     }
 }

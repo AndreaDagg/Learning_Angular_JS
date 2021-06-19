@@ -30,19 +30,22 @@ function countDown(int) {
     }
 }
 
-countDown(10)
+countDown(10);
 
 
-/* Sintassi per dichiarare e richiamre la funzione senza dover riscrivere il nome */
+/*  Sintassi per dichiarare e richiamre la funzione senza dover riscrivere il nome, quidni possiamo usare questa sintassi
+*   per dichiarare e runnare subito la funzione  */
 (function detectChanges() {
     console.log("Detect Changes");
 })();
 
 
-
 /** Rest operator
- * Passiamo quanti argoemnti vogliamo e finiranno in una sorta di array */
-function buttonManager(num1, num2, ...nums) {
+ * Passiamo quanti argoemnti vogliamo e finiranno in una sorta di array
+ * @num1: prende il primo valore passato
+ * @num2: prende il secondo valore come parametro
+ * @...nums: è un array che prende in input tutti gli altri valori passati come parametro */
+(function buttonManager(num1, num2, ...nums) {
     console.log(nums);
     let sum = 0;
     for (let i = 0; i < nums; i++) {
@@ -51,6 +54,7 @@ function buttonManager(num1, num2, ...nums) {
     console.log(sum);
     return sum;
 
-}
+})(1, 2, 3,);
 
-buttonManager(1, 2, 3, 4, 5, 6, 7, 8, 9)
+//Alternativa richiamo:
+// buttonManager(1, 2, 3, 4, 5, 6, 7, 8, 9)
