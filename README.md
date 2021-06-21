@@ -2,9 +2,10 @@
 
 <details open="open">
   <summary>JavaScript_Learning</summary>
-  
-  ### Java Script Section
-  The "JavaScript_Learning" folder contains the code for learning the JS language. 
+
+### Java Script Section
+
+The "JavaScript_Learning" folder contains the code for learning the JS language.
    <ol>
     <li>
           <details>
@@ -24,6 +25,8 @@
             <summary><strong> Js_section_2</strong></summary> 
                       <ol>
                         <li>   Timer Project with JS and jQuery</li>
+                        <li>   AND OR -- && ||  </li>
+                        <li>   Spread Operator </li>
                       </ol>
           </details>
       </li>
