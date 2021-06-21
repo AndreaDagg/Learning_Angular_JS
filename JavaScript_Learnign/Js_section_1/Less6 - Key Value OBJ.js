@@ -14,3 +14,19 @@ let company = {
 
 console.log(company.createNewProduct("IPad"));
 console.log(company["fouders"]);
+
+
+/** Destructoring in function
+ * psassiamo come parametro il nome del tipo dell'oggetto */
+
+let obj = {
+    title: "New Born",
+    band: "MUSE"
+}
+
+function controller(title, {band}) {
+    console.log(title);
+    console.log(band);
+}
+
+controller("Bliss", obj)
