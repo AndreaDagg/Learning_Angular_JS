@@ -8,6 +8,13 @@ CREAIAMO IL PROGETTO ng new nome_Progetto
 routing: mostra url
 
 Il cuore del progetto è nella cartella src 
+- Ogni componente ha un html un js e un css dedicato
+- src->app->style.css è un contenitore globale, tutto quello che inseriamo qui potrà essere riutilizaato da qualsiasi componente 
+- nel main.ts si va a caricare l'AppModule 
+- l'intera applicazione viene generata sull'index.html
+- src->assets cartella per le risorse (img, jquery ...)
+
+Appmodule and App component si trovano nella cartella app
 
 
 FAR PARTIRE L'APPLICAZIONE 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 
 /*Com'è fatto un componente? 
-* Un compoenente ha un file html uno ts e uno css 
+* Un componente ha un file html uno ts e uno css 
 * L'array di css interessa solo l'html del componente
 */
 @Component({
