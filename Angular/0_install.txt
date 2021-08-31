@@ -1,0 +1,15 @@
+Per installare angular: 
+
+Installare node https://nodejs.org/it/download/ 
+
+Dal terminale poi installiamo angular npm -g i @angular/cli 
+
+CREAIAMO IL PROGETTO ng new nome_Progetto
+routing: mostra url
+
+Il cuore del progetto è nella cartella src 
+
+
+FAR PARTIRE L'APPLICAZIONE 
+-> ng serve (nella cartella dell'app)
+-> la porta sarà http://localhost:4200/
