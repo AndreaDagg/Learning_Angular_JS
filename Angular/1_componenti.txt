@@ -1,0 +1,29 @@
+------ l'App component ------ 
+nell' "app.component.html" ovvero il file html principale andiamo a mettere l'html principale
+quidni tutto il codice. Andiamo a mettere l'header, la navbar e il footer dato che sono statici in tutto il sito e quindi non ci sarà bisogno di cambiarli 
+possiamo mettere anche pezzi di codici dinamici
+il .css associato e style .css 
+
+------ Creare un componente ------ 
+[String aper creare un nuovo compoennte] ng g c nome_componente  g/generate c/compoente 
+
+- Si crea nel porgetto in [src > app > cartella_nome_componente] una nuova cartella con tutti i file 
+- Il file ....component.ts troviamo la logica del funzionamento del compoente 
+    * Le path ai file css e html 
+    * La funzione "constructor" ovvero quel medoto richiamato all'avvio dell'app quando si richiama il compoente [viene richiamato solo quando si GENERA il componente]
+    * ngOnInit metodo che permette di avviare le istruzioni che inseriremo, [viene richimato ogni volta che si interagisce con il componenete]
+
+------ Assegnare al template ------
+Creato il componente, bisogna richiamarlo/dichiarare nel tenplate principale ovvero in app.component.html
+
+si crea un div e si inserisce il tag identificativo presente nel file .ts del compoente creato
+ad es. per un compoente di nome home avremo .....selector: 'app-home'.....   quindi in app.component.html richiamiamo nel div <app-home></app-home>
+
+se la nostra pagina è composta da più sottocomponenti es. paragrafi, sidebar.... è possbile richiamre il nuovo sottocomponete all'interno del componete principale
+importando tramite il div il componete nella parte dell'html dove ci interessa che stia. Evitiamo i problemi di organizzazione e richiamo delle sezioni html. 
+
+------ Passare il valore di una variabile da un compoente padre ad uno figlio ------ 
+* app.component.ts -> PADRE
+* home.component.ts -> FIGLIO 
+Nella classe padre dichiariamo una variabile VarP successivemnte nella classe filgio utilizzaeremo @Input()VarF per indicare che ci aspettiamo un valore da assegnare tramite passaggio
+nell app-nome_compoente tra quadre indichiamo il nome della variabile figlio passiamo la variabile padre ovvero <app-nome [VarF] = VarP> ..... 

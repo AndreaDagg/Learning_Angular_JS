@@ -20,3 +20,7 @@ Appmodule and App component si trovano nella cartella app
 FAR PARTIRE L'APPLICAZIONE 
 -> ng serve (nella cartella dell'app)
 -> la porta sarà http://localhost:4200/
+
+REPOSITORY 
+Dato che ogni volta che si clona la repository non si hanno i moduli di node installati possiamo creare un file install.sh (eseguibile linux richiamabile da terminale di visual studio)
+successivamente .\install.sh

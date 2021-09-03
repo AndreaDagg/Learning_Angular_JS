@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
 */
 @Component({
   selector: 'app-root',                 //nome del tag html che usiamo per chiamare il componente 
-  templateUrl: './app.component.html',  //dove predere il codice html
+  templateUrl: './app.component.html',  /*dove predere il codice html*/
   styleUrls: ['./app.component.css']    //array per collegare i file .css
 })
 /* Tramite questa dichiarazione si creano le classi typeScript */
 export class AppComponent {
   title = 'progettAngular';
+  username_Padre: string = "AndreaDagg12344";
 }
