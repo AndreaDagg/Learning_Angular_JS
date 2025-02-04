@@ -1,0 +1,73 @@
+<h1> Scheda del cane: {{cani[0].nome}}</h1>
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{cani[0].nome.toUpperCase()}}</mat-card-title>
+      <mat-card-subtitle>{{cani[0].razza}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{cani[0].descrizione}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Change dog's name</mat-label>
+      <input matInput placeholder="Ex. Lulù" (input)="OnInput($event)" value="">
+    </mat-form-field>
+  </form>
+
+  <!-- Se modifico il valore qui si rifeltte su tutto. Quindi è sia un evento modificando il valore,
+   che una PROPRIETA' ovvero si modifica il vlore nel form se clicco il bottone onClick
+   N.B sopra non si mopdifica -->
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Change dog's name - TwoWay biding</mat-label>
+      <input matInput placeholder="Ex. Lulù" [(ngModel)]="cani[0].nome" name="dasda"/>
+    </mat-form-field>
+  </form>
+
+<!-- *ngIf  è una direttiva strutturale quindi aggiunge e rimuove elementi al DOM 
+ In questo esempio aggiunge e rimuove un testo -->
+  <p *ngIf="vaccinazione == true; then bloccoIF else bloccoELSE"></p>
+  <ng-template #bloccoIF>
+    <h2 style="color: greenyellow;">Il cane {{cani[0].nome}} è vaccinato</h2>
+  </ng-template>
+  <ng-template #bloccoELSE>
+    <h2 style=" background-color: red;">Il cane {{cani[0].nome}}  non è vaccinato</h2>
+  </ng-template>
+
+<h3>Raised Buttons</h3>
+<div class="example-button-row">
+  <button mat-raised-button></button>
+  <button mat-raised-button color="primary" (click)="OnClick(this)">TwoWay binding - onClick()</button>
+  <button mat-raised-button color="accent" (click)="modifyVaccinazione()">Modifica Vaccinazione</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button [disabled]="isDisabled">Disabled?</button>
+  <a mat-raised-button routerLink=".">Link</a>
+</div>
+
+<h1 style="margin-top: 30px">------ Altri cani generati con *ngFor</h1>
+<ul>
+  <li *ngFor="let cane of cani; index as i">
+    ID: {{i}} - Nome: {{ cane.nome }} - {{ cane.razza }}
+    <!-- *ngIf  è una direttiva strutturale quindi aggiunge e rimuove elementi al DOM 
+      In questo esempio aggiunge e rimuove un testo -->
+    <p *ngIf="cane.isVaccinato == true; then bloccoIF; else bloccoELSE"></p>
+    <ng-template #bloccoIF>
+      <h2 style="color: greenyellow">Il cane {{ cani[i].nome }} è vaccinato</h2>
+    </ng-template>
+    <ng-template #bloccoELSE>
+      <h2 style="background-color: red">
+        Il cane {{ cani[i].nome }} non è vaccinato
+      </h2>
+    </ng-template>
+  </li>
+</ul>
