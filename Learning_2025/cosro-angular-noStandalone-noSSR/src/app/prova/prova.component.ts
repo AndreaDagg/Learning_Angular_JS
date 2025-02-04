@@ -5,8 +5,10 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
+  EventEmitter,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -20,9 +22,11 @@ import {
 // Anche se sono implementati in ordine diverso srispetto all'orine del lifecicle non è un problema
 // Dalla console del browser possiamo vedere l'esecuzione dei metodi del lifecycle
 export class ProvaComponent implements OnInit {
+
   
   isDisabled = false;
   vaccinazione = true;
+  DatiRicevuti : string = '';
 
   cani = [
     {
@@ -39,7 +43,7 @@ export class ProvaComponent implements OnInit {
       descrizione: `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.`,
-        isVavvinato: true
+        isVaccinato: false
     },
     {
       nome: 'Luna',
@@ -80,4 +84,8 @@ export class ProvaComponent implements OnInit {
     this.vaccinazione = !this.vaccinazione;
   }
 
+  onRicevidati(value: string){
+    console.log('Ricevuto:', value);
+    this.DatiRicevuti = "Ricevuto: " + value;
+  }
 }

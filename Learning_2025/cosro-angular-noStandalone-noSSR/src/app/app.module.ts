@@ -15,11 +15,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatInputModule} from '@angular/material/input';
+import { Componente2Component } from './componente-2/componente-2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProvaComponent
+    ProvaComponent,
+    Componente2Component
   ],
   imports: [
     BrowserModule,

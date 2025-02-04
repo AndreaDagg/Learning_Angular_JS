@@ -34,6 +34,7 @@
     </mat-form-field>
   </form>
 
+
 <!-- *ngIf  è una direttiva strutturale quindi aggiunge e rimuove elementi al DOM 
  In questo esempio aggiunge e rimuove un testo -->
   <p *ngIf="vaccinazione == true; then bloccoIF else bloccoELSE"></p>
@@ -54,20 +55,36 @@
   <a mat-raised-button routerLink=".">Link</a>
 </div>
 
+
+<!-- *ngFor è una direttiva strutturale che permette di iterare su un array di oggetti -->
 <h1 style="margin-top: 30px">------ Altri cani generati con *ngFor</h1>
 <ul>
   <li *ngFor="let cane of cani; index as i">
+    <!-- Usiamo ngStyle per andare a modificare lo syle dinamicamente, [] property binding tiamo legando una proprietà dell'elemento -->
+    <div class="cerchio" [ngStyle]="{'background': cane.isVaccinato ? 'green' : 'red'}"></div>
     ID: {{i}} - Nome: {{ cane.nome }} - {{ cane.razza }}
     <!-- *ngIf  è una direttiva strutturale quindi aggiunge e rimuove elementi al DOM 
       In questo esempio aggiunge e rimuove un testo -->
     <p *ngIf="cane.isVaccinato == true; then bloccoIF; else bloccoELSE"></p>
     <ng-template #bloccoIF>
-      <h2 style="color: greenyellow">Il cane {{ cani[i].nome }} è vaccinato</h2>
+      <p style="color: greenyellow">Il cane {{ cani[i].nome }} è vaccinato</p>
     </ng-template>
     <ng-template #bloccoELSE>
-      <h2 style="background-color: red">
+      <p style="background-color: red">
         Il cane {{ cani[i].nome }} non è vaccinato
-      </h2>
+      </p>
     </ng-template>
   </li>
 </ul>
+
+
+<!-- ngSwitch non è strutturale *ngSwitchcase lo è e permette la creazione dei div -->
+<h3>ngSwitch directive</h3>
+<div [ngSwitch]="cani.length % 2">
+  <div *ngSwitchCase="0">Il numero di cani sono pari</div>
+  <div *ngSwitchCase="1">Il numero di cani sono dispari</div>
+  <div *ngSwitchDefault>Il cane non è vaccinato</div>
+</div>
+
+<app-componente-2 [data]="cani" (mandaDatiEveto)="onRicevidati($event)"></app-componente-2>
+<p>{{DatiRicevuti}}</p>

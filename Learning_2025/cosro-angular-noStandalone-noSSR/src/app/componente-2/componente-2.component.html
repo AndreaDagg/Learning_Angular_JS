@@ -1,0 +1,9 @@
+<p *ngIf="data.length > 0; then bloccoTrue else bloccoElse"> </p>
+<ng-template #bloccoTrue>
+  <h1>Dati ricevuti nel child component dal father component</h1>
+</ng-template>
+<ng-template #bloccoElse>
+  <h1>Dati non ricevuti dal padre</h1>
+</ng-template>
+
+<button mat-raised-button color="primary" (click)="mandaDati()">Invia dati al padre</button>
