@@ -16,12 +16,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatInputModule} from '@angular/material/input';
 import { Componente2Component } from './componente-2/componente-2.component';
+import { HighlightDirective } from './direttive/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProvaComponent,
-    Componente2Component
+    Componente2Component,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { Componente2Component } from './componente-2/componente-2.component';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

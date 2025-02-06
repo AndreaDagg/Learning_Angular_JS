@@ -7,3 +7,13 @@
 </ng-template>
 
 <button mat-raised-button color="primary" (click)="mandaDati()">Invia dati al padre</button>
+
+
+<h2> Scegli un colore  per verificare l'highlight</h2>
+<div>
+  <input type="radio" name="coloreSelezionato" (click)="selezionaColore('red')"> Rosso
+  <input type="radio" name="coloreSelezionato" (click)="selezionaColore('blue')"> Blu
+  <input type="radio" name="coloreSelezionato" (click)="selezionaColore('green')"> Verde
+</div>
+<!-- Facciamo riferimento ad una direttiva da noi creata -->
+<p [appHighlight]="colore" appHighlight_default="pink"> Nuova direttiva highlight del colore {{colore | uppercase}} </p>

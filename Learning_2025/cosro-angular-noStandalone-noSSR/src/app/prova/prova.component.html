@@ -25,7 +25,7 @@
   </form>
 
   <!-- Se modifico il valore qui si rifeltte su tutto. Quindi è sia un evento modificando il valore,
-   che una PROPRIETA' ovvero si modifica il vlore nel form se clicco il bottone onClick
+   che una PROPRIETA' ovvero si modifica il valore nel form se clicco il bottone onClick
    N.B sopra non si mopdifica -->
   <form class="example-form">
     <mat-form-field class="example-full-width">
@@ -39,7 +39,7 @@
  In questo esempio aggiunge e rimuove un testo -->
   <p *ngIf="vaccinazione == true; then bloccoIF else bloccoELSE"></p>
   <ng-template #bloccoIF>
-    <h2 style="color: greenyellow;">Il cane {{cani[0].nome}} è vaccinato</h2>
+    <h2 styl e="color: greenyellow;">Il cane {{cani[0].nome}} è vaccinato</h2>
   </ng-template>
   <ng-template #bloccoELSE>
     <h2 style=" background-color: red;">Il cane {{cani[0].nome}}  non è vaccinato</h2>
@@ -60,7 +60,7 @@
 <h1 style="margin-top: 30px">------ Altri cani generati con *ngFor</h1>
 <ul>
   <li *ngFor="let cane of cani; index as i">
-    <!-- Usiamo ngStyle per andare a modificare lo syle dinamicamente, [] property binding tiamo legando una proprietà dell'elemento -->
+    <!-- Usiamo ngStyle per andare a modificare lo syle dinamicamente, [] property binding stiamo legando una proprietà dell'elemento -->
     <div class="cerchio" [ngStyle]="{'background': cane.isVaccinato ? 'green' : 'red'}"></div>
     ID: {{i}} - Nome: {{ cane.nome }} - {{ cane.razza }}
     <!-- *ngIf  è una direttiva strutturale quindi aggiunge e rimuove elementi al DOM 
