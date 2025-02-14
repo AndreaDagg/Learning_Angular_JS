@@ -1,29 +1,40 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProvaComponent } from './prova/prova.component';
 
-// Angular Material 
+// Angular Material
 // Import the Angular Material modules after Angular's BrowserModule, as the import order matters for NgModules.
 // The Angular Material modules are imported after the BrowserModule to ensure that the Angular Material components are available for use in the application.
-// After importing the Angular Material modules, add them to the imports array in the @NgModule decorator. 
+// After importing the Angular Material modules, add them to the imports array in the @NgModule decorator.
 // The imports array contains a list of external modules that the application needs.
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { Componente2Component } from './componente-2/componente-2.component';
 import { HighlightDirective } from './direttive/highlight.directive';
+import { AboutComponent } from './componente-2/about/about.component';
+import { ContatComponent } from './componente-2/contat/contat.component';
+import { HomeComponent } from './componente-2/home/home.component';
+import { ContattoComponent } from './componente-2/contatto/contatto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProvaComponent,
     Componente2Component,
-    HighlightDirective
+    HighlightDirective,
+    AboutComponent,
+    ContatComponent,
+    HomeComponent,
+    ContattoComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,12 +42,9 @@ import { HighlightDirective } from './direttive/highlight.directive';
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

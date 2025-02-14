@@ -29,4 +29,12 @@ export class ServizioProvaService {
   ]
 
   constructor() { }
+
+  getAutomobili(){
+    return this.automobili
+  }
+
+  getAuto(index: number){
+    return this.automobili[index];
+  }
 }

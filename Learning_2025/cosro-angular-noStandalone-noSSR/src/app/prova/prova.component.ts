@@ -88,4 +88,6 @@ export class ProvaComponent implements OnInit {
     console.log('Ricevuto:', value);
     this.DatiRicevuti = "Ricevuto: " + value;
   }
+
+ 
 }

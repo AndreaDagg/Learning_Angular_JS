@@ -1,0 +1,13 @@
+<p>contat works!</p>
+<!-- Gestiamo la lista delle automobili o il rpofilo della singola automobile passata per parametro --> 
+<div *ngIf="!isProfile; else profiloAuto">
+  <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: x-large;">Automobili</h3>
+  <div *ngFor="let auto of automobili, index as i">
+    <a routerLink="/contatti/{{i}}"><p>{{auto.marca}} {{auto.modello}}</p></a>
+  </div>
+</div>
+<ng-template #profiloAuto>
+  <h3>Profilo</h3>
+  <p>Profilo Auto</p>
+  <p>{{automobile.marca}} {{automobile.modello}}
+</ng-template>
