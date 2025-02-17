@@ -47,7 +47,7 @@ export class UserComponent {
       - Prestazioni migliori: aggiornano solo le parti necessarie senza triggerare il change detection globale.
 
        avatar = input.required<string>();
-       userSelected = output<string>()
+       userSeleccted = output<string>()
 
        userImagePAth = computed(() => {
         return "assets/users/" + this.avatar():

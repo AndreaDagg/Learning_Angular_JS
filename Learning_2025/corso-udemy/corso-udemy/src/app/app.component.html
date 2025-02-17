@@ -9,8 +9,20 @@
         [avatar]="users[0].avatar"
         [name]="users[0].name"
         (userSelected)="onSelectedUser($event)"
+
       >
       </app-user>
     </li>
+    <li>
+        <app-user
+          [id]="users[1].id"
+          [avatar]="users[1].avatar"
+          [name]="users[1].name"
+          (userSelected)="onSelectedUser($event)"
+  
+        >
+        </app-user>
+      </li>
   </ul>
 </main>
+<app-tasks [name] = "selectedUser.name" > </app-tasks> 
