@@ -1,0 +1,24 @@
+<!-- <div>
+  <button (click)="onUserSelected()">
+    <img
+      [src]="userImagePAth"
+      [alt]="selectedUser().name"
+      
+    />
+    <span>{{ selectedUser().name }}</span>
+  </button>
+</div>  -->
+
+
+<!-- Senza l'utilizzo di Signal -->
+<div>
+    <button (click)="onSelectedUser()">
+      <img
+        [src]="userImagePAth"
+        [alt]="name"
+        
+      />
+      <span>{{name}}</span>
+    </button>
+  </div> 
+  

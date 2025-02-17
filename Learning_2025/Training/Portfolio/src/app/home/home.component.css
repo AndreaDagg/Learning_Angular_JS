@@ -1,0 +1,15 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altezza per centrare verticalmente */
+  }
+  
+  .profile-image {
+    width: 150px; /* Dimensione immagine */
+    height: 150px;
+    border-radius: 50%; /* Rende l'immagine rotonda */
+    object-fit: cover; /* Assicura il riempimento senza deformazioni */
+    border: 3px solid #ddd; /* Bordo sottile per effetto estetico */
+  }
+  

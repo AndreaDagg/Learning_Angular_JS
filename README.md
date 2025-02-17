@@ -13,13 +13,17 @@
 
 Exectur the command in the workspace directory. If powershell policy blocks the script execution: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
+### Components
 The main file is app.component.ts and it's the logic, the template is app.component.html and the style is app.component.css. 
 Poi possiamo creare ogni componente che volgiamo ad esempio clienti.componenti. 
 In @Component ansiamo a definire quali sono i file Templarte e style. 
 
+Genera un nuovo componente 
 > **ng g c name** OR **ng generate component NOME**
 
-Genera un nuovo componente 
+Importare un componente in un altro componente: importare il componente nell'header e po aggiungerlo all'array del decodratore **imports**
+
+N.B. Nella versione standalone per utilizzare il componente va dichiarato nel main.ts (vedi corso udemy)
 
 ### Angular Matirial 
 https://material.angular.io/
@@ -51,10 +55,14 @@ E' buona prassi non creare componenti con troppe logioche all'interno perché ha
 
 > ng g s servizio-prova
 
+Poi nel componente in cui vogliamo usufruire del servizio, nel costruttore passiamo il parametro 
+``` constructor(private servizioProva: ServizioProvaService) { servizioProva.getQualcosa() } ```
+
 ### EP.23 - Routing
 Passare da un componente ad un altro. Angular è single page c'è solo index, quindi per spostarsi c'è il routing, fa finta di passare. 
 Il modulo che si occupa di questo è **app-routing.module.ts** che si genera all'inizialòizzazione del progetto se si mette YES, oppure si fa dopo con **ng g module app-routing --flat --module=app**
 
+- Dopo aver messo la path in **Routes = [ { path: '' .... }]** mettere il tag ``<router-outlet> <router-outlet>`` in questo tag si alternano i componenti che si selezionano nella path. 
 ### EP.27 - Auth 
 Gestisce le autorizzazioni. E' importante per correttezza creare una cartella auth e generare il service auth all'interno 
 

@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<!-- QUESTO componente padre intercetta l'evento PROVENIENTE DAL FIGLIO USER con (userSelected)="onSelectedUser($event)" e chiama il metodo "onSelectedUser()" per gestire l'azione.   -->
+<main>
+  <ul id="users">
+    <li>
+      <app-user
+        [id]="users[0].id"
+        [avatar]="users[0].avatar"
+        [name]="users[0].name"
+        (userSelected)="onSelectedUser($event)"
+      >
+      </app-user>
+    </li>
+  </ul>
+</main>
