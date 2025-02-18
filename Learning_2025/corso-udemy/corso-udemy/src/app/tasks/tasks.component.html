@@ -11,7 +11,10 @@
   <ul>
     @for (task of selectedUserTasks; track task.id){
     <li>
+      <!-- Cdice che si usa poer ascoltare un evento ma con inject non c'è più bisogno 
       <app-task [task]="task" (taskCompleted)="onCompleted($event.toString())"></app-task>
+    --> 
+      <app-task [task]="task"/>
     </li>
     }
   </ul>
