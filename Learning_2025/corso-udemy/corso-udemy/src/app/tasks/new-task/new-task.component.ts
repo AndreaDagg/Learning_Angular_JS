@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { type Task } from '../task/task.model';
+import { TaskService } from '../tasks.services';
 
 @Component({
   selector: 'app-new-task',
@@ -11,12 +12,12 @@ import { type Task } from '../task/task.model';
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-
+  @Input({required: true}) userId!: string;
   /**
    * In questo caso l'evento non ha parametri, quindi il tipo di EventEmitter è void.
    */
   @Output() onCanceledEvent = new EventEmitter<void>();
-  @Output() onSubmittedEvent = new EventEmitter<Task>();
+  //@Output() onSubmittedEvent = new EventEmitter<Task>();
 
   /**
    * Utilizziamo il TWO-WAY DATA BINDING per leggere i valori inseriti dall'utente.
@@ -25,6 +26,9 @@ export class NewTaskComponent {
   enteredTitle = '';
   enteredSummary = '';
   enteredDate = ''; 
+  // Utilizziamo il decoratore inject per iniettare il servizio TaskService al posto
+  // EventEmitter
+  private taskService = inject(TaskService);
   
   onCanceled(){
     //console.log('Task creation cancelled!');
@@ -32,12 +36,13 @@ export class NewTaskComponent {
   }
 
   onSubmit(){
-    this.onSubmittedEvent.emit({
+    this.taskService.setTask({
       id: new Date().getTime().toString(),
-      userId: Math.random().toString(),
+      userId: this.userId,
       title: this.enteredTitle,
       summary: this.enteredSummary,
       dueDate: this.enteredDate
-    });
+    }, this.userId);
+    this.onCanceledEvent.emit();
   }
 }

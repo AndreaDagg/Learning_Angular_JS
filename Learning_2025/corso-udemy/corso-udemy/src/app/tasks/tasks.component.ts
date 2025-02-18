@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import {TaskComponent} from './task/task.component';
 import { NewTaskComponent } from "./new-task/new-task.component";
 import { Task } from './task/task.model';
+import { TaskService } from './tasks.services';
 
 @Component({
   selector: 'app-tasks',
@@ -17,32 +18,20 @@ export class TasksComponent {
   @Input({ required: true }) id!: string;
   @Input({ required: true }) name!: string;
   isAddingtask: boolean = false; 
+  private tasksService: TaskService;
+  /**
+   *  ---- istanziamo un servizio tramite Dependency Injection  ----
+   * La Dependency Injection è un design pattern che permette di creare oggetti e passarli ad un'altra classe.
+   * In questo caso, il costruttore di TasksComponent riceve un'istanza di TaskService.
+   * Questo è possibile grazie al decoratore @Injectable({providedIn: 'root'}) presente in TaskService.
+   * 
+   *  */ 
+  constructor(tasksService: TaskService){
+    this.tasksService = tasksService;
+    
 
-  dummyTasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ]
+  }
+
 
   printUserInfo(){
     //console.log('User id:', this.id);
@@ -50,7 +39,7 @@ export class TasksComponent {
   }
 
   get selectedUserTasks(){
-    return this.dummyTasks.filter(task => task.userId === this.id);
+    return this.tasksService.getUserTasksFromTaskService(this.id);
   }
 
   /**
@@ -59,12 +48,8 @@ export class TasksComponent {
    * Il metodo filter restituisce un nuovo array con tutti gli elementi che soddisfano la condizione
    */
   onCompleted(taskId: string){
-    try{
-      this.dummyTasks = this.dummyTasks.filter((task) => task.id != taskId); 
-      console.log('Task completed:', taskId);
-    } catch (error){
-      console.log('Error:', error);
-    }
+    this.tasksService.removeTask(taskId);
+    
   }
 
   onStartAddTask(){
@@ -74,22 +59,6 @@ export class TasksComponent {
 
   onCancelAddTask(){
     console.log('Task creation cancelled!');
-    this.isAddingtask = false;
-  }
-
-  onAddTask(task: Task){
-    /**
-     * l'unico valore che si prende da qui è l'userId perché è passato in input
-     */
-    this.dummyTasks.push(
-      {
-        id: task.id,
-        userId: this.id,
-        title: task.title,
-        summary: task.summary,
-        dueDate: task.dueDate
-      }
-    );
     this.isAddingtask = false;
   }
 
