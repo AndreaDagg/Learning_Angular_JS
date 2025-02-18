@@ -8,6 +8,16 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
+
+/**
+ * Interfaccia User: Le interfaccie sono un modo per definire i tipi di oggetti in TypeScript. 
+ */
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -25,10 +35,15 @@ export class UserComponent {
    * il "!": è un operatore di non-null assertion che ci permette di dichiarare che una variabile non sarà mai null o undefined. Ache se no non la vediamo iniziallizzare qui sappiamo che da qualche arte di inizzalizza
    * {required: true} è un oggetto che ci permette di dichiarare che il valore passato tramite @Input() è obbligatorio.
    */
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
-  /**
+  /* --- Passiamo un oggetto user sora definito da un'interfaccia e commento i campi singoli
+    @Input({ required: true }) id!: string;
+    @Input({ required: true }) avatar!: string;
+    @Input({ required: true }) name!: string; 
+    
+    */
+
+  @Input({required: true}) user! : User
+   /**
    * @Output() permette al componente di emettere eventi verso il componente padre.
    * ventEmitter indica che l'evento non trasporta dati, ma solo la notifica dell'evento.
    * 
@@ -57,7 +72,7 @@ export class UserComponent {
 
   get userImagePAth() {
     // return "assets/users/" +this.selectedUser().avatar;
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectedUser() {
@@ -67,8 +82,8 @@ export class UserComponent {
     /**
      * emit() è un metodo che permette di emettere un evento.
      */
-    this.userSelected.emit(this.id);
-    console.log('(User Component) - User selected:', this.id);
+    this.userSelected.emit(this.user.id);
+    console.log('(User Component) - User selected:', this.user.id);
  
   }
 }

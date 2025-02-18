@@ -31,6 +31,9 @@ Va importato per ogni progetto con il comando:
 
 > ng add @angular/material
 
+### NgIF && NgFor
+importare ```import { NgFor, NgIf } from '@angular/common';``` in app.component.ts e poi ```..., NgFor, NgIf ..``` nell'array Imports:[...] del decoratore
+
 ### EP.6 - data binding
 Permette di avere elementi dinamici 
 
