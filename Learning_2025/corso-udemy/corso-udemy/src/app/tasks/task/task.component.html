@@ -3,6 +3,6 @@
     <time>{{task.title}}</time>
     <p>{{task.summary}}</p>
     <p class="actions">
-        <button>Complete</button>
+        <button (click)="onCompleted(task.id)">Complete</button>
     </p>
 </article>

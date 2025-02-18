@@ -34,6 +34,8 @@ Va importato per ogni progetto con il comando:
 ### NgIF && NgFor
 importare ```import { NgFor, NgIf } from '@angular/common';``` in app.component.ts e poi ```..., NgFor, NgIf ..``` nell'array Imports:[...] del decoratore
 
+Nelle nuove versioni si può usare ``` @if (){} ``` e il comando ``` @for (){} ```
+
 ### EP.6 - data binding
 Permette di avere elementi dinamici 
 
@@ -44,6 +46,8 @@ Permette di avere elementi dinamici
 Property binding [value]="cani[0].nome" → l'input mostra il valore attuale di cani[0].nome.
 Event binding (input)="cani[0].nome = $event.target.value" → aggiorna il valore di cani[0].nome quando l'utente digita qualcosa.
 Angular semplifica tutto con [(ngModel)], che unisce i due binding in uno solo.
+
+```ngModel``` consente di aggiungere funzionalità. Va usata con input, text area e cose del genere. Va registrata per poterla usare
 
 ### @Input() e @Output()
 
