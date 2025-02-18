@@ -11,8 +11,11 @@
 
 
 <!-- Senza l'utilizzo di Signal -->
+
+
 <div>
-    <button (click)="onSelectedUser()">
+    <!-- classe css per attivare un bottone se è cliccato -->
+    <button [class.active]="lightButtonSelect" (click)="onSelectedUser()">
       <img
         [src]="userImagePAth"
         [alt]="user.name"

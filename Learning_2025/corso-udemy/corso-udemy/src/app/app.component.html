@@ -5,7 +5,7 @@
   <ul id="users">
     <li *ngFor="let u of usersDummy">
       <script> console.log("sad", u) </script>
-      <app-user [user]="u" (userSelected)="onSelectedUser($event)" />
+      <app-user [lightButtonSelect]="u.id === selectedUserId ? true : false" [user]="u" (userSelected)="onSelectedUser($event)" />
     </li>
     
   </ul>

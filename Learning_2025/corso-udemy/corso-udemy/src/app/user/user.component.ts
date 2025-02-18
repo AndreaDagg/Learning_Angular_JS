@@ -36,6 +36,7 @@ export class UserComponent {
     */
 
   @Input({required: true}) user! : User
+  @Input({required: true}) lightButtonSelect!: boolean;
    /**
    * @Output() permette al componente di emettere eventi verso il componente padre.
    * ventEmitter indica che l'evento non trasporta dati, ma solo la notifica dell'evento.
