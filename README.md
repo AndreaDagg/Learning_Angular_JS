@@ -45,6 +45,75 @@ Property binding [value]="cani[0].nome" → l'input mostra il valore attuale di 
 Event binding (input)="cani[0].nome = $event.target.value" → aggiorna il valore di cani[0].nome quando l'utente digita qualcosa.
 Angular semplifica tutto con [(ngModel)], che unisce i due binding in uno solo.
 
+### @Input() e @Output()
+
+#### @Input()
+`@Input()` permette al componente figlio di ricevere dati dal componente padre.  
+Il padre passa un valore al figlio utilizzando la property binding `[prop]="valore"`.
+
+Esempio:  
+
+_Componente padre (`parent.component.html`)_
+```html
+<app-user [name]="userName"></app-user>
+```
+
+_Componente figlio (`user.component.ts`)_
+```typescript
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  template: `<p>Nome: {{ name }}</p>`
+})
+export class UserComponent {
+  @Input() name!: string;
+}
+```
+
+---
+
+#### @Output()
+`@Output()` permette al componente figlio di inviare eventi al componente padre tramite `EventEmitter`.  
+Il padre può intercettare l'evento e rispondere con un metodo.
+
+Esempio:  
+
+_Componente figlio (`user.component.ts`)_
+```typescript
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  template: `<button (click)="selectUser()">Seleziona</button>`
+})
+export class UserComponent {
+  @Output() userSelected = new EventEmitter<void>();
+
+  selectUser() {
+    this.userSelected.emit();
+  }
+}
+```
+
+_Componente padre (`parent.component.html`)_
+```html
+<app-user (userSelected)="onUserSelected()"></app-user>
+```
+
+_Componente padre (`parent.component.ts`)_
+```typescript
+export class ParentComponent {
+  onUserSelected() {
+    console.log("Utente selezionato!");
+  }
+}
+```
+
+Con `@Input()` e `@Output()`, Angular facilita la comunicazione tra componenti in modo strutturato e modulare. 🚀
+
+
+
 ### EP. 20 - Creare una direttiva
 Generiamo al direttiva e aggiungiamo l'import in AppModule e anche in declaration
 

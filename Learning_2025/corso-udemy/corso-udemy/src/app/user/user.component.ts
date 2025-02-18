@@ -8,15 +8,8 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
-
-/**
- * Interfaccia User: Le interfaccie sono un modo per definire i tipi di oggetti in TypeScript. 
- */
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+// Importiamo l'interfaccia del tipo User dal file user.model.ts
+import { type User } from './user.model';
 
 @Component({
   selector: 'app-user',
