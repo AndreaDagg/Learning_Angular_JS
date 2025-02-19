@@ -134,7 +134,8 @@ E' buona prassi non creare componenti con troppe logioche all'interno perché ha
 Poi nel componente in cui vogliamo usufruire del servizio, nel costruttore passiamo il parametro 
 ``` constructor(private servizioProva: ServizioProvaService) { servizioProva.getQualcosa() } ```
 
-### EP.23 - Routing
+### EP.23 - Routing - Moduli
+ - Si usano i moduli anche nel corso udemy progetto 01...
 Passare da un componente ad un altro. Angular è single page c'è solo index, quindi per spostarsi c'è il routing, fa finta di passare. 
 Il modulo che si occupa di questo è **app-routing.module.ts** che si genera all'inizialòizzazione del progetto se si mette YES, oppure si fa dopo con **ng g module app-routing --flat --module=app**
 
