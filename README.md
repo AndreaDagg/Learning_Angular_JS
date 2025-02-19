@@ -18,6 +18,8 @@ The main file is app.component.ts and it's the logic, the template is app.compon
 Poi possiamo creare ogni componente che volgiamo ad esempio clienti.componenti. 
 In @Component ansiamo a definire quali sono i file Templarte e style. 
 
+**Un componenete dovrebbe fare una sola cosa** è questa la razio con cui decidere di suddicviderlo
+
 Genera un nuovo componente 
 > **ng g c name** OR **ng generate component NOME**
 

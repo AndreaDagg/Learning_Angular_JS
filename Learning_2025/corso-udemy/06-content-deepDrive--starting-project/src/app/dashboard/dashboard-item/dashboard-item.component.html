@@ -1,0 +1,15 @@
+<div class="dashboard-item">
+    <article>
+        <header>
+          <img [src]="image.src" [alt]="image.alt" />
+          <!-- SE USASSIMO I SIGNAL -->
+          <!--<img [src]="image().src" [alt]="title().alt" />-->
+          <h2>{{title}}</h2>
+        </header>
+        <!-- Il tag <ng-content></ng-content> è una direttiva Angular che viene usata nei 
+         componenti per consentire l'inserimento di contenuto personalizzato all'interno di un componente figlio.
+          In pratica, <ng-content> permette di proiettare contenuto esterno nel template di un componente, 
+            creando componenti più flessibili e riutilizzabili.-->
+        <ng-content></ng-content>
+      </article>
+</div>
