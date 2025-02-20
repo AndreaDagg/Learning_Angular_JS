@@ -1,7 +1,8 @@
 export interface TodoItem {
 
-    id: number;
+    id: string ;
     title: string;
     description: string;
     done: boolean;
+    category: 'work' | 'family' | 'hobby';
 }

@@ -1,18 +1,15 @@
 .card {
-    max-width: 400px;
+    max-width: 100%;
     background: rgba(255, 255, 255, 0.774);
     border-radius: 3%;
     
-  }
-  
-  .card-footer {
-    padding: 16px;
-  }
+}
   
   mat-card-title {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    align-items: center;
   }
   

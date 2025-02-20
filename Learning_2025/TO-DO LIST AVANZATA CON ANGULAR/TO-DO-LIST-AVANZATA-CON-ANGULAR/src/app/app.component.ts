@@ -7,7 +7,7 @@ import { TodoFormComponent } from "./todo-form/todo-form.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TodoListComponent, MatGridListModule, TodoFormComponent],
+  imports: [TodoListComponent, MatGridListModule, TodoFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

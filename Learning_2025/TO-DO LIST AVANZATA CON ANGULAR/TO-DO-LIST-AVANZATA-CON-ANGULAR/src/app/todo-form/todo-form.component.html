@@ -3,21 +3,21 @@
   <ul class="form-list">
     <li>
       <p>
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" [(ngModel)]="titleForm"/>
       </p>
     </li>
     <li>
       <p>
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" [(ngModel)]="categoryForm"/>
       </p>
     </li>
     <li>
       <p>
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" [(ngModel)]="descriptionForm"/>
       </p>
     </li>
     <li>
-      <button type="submit">Aggiungi</button>
+      <button type="submit" [disabled] = 'buttonDisabled'>Aggiungi</button>
     </li>
   </ul>
 </form>
