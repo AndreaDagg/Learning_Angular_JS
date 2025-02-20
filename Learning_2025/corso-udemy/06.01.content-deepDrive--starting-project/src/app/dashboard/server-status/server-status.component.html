@@ -1,0 +1,29 @@
+<!-- The provided code snippet is an Angular template that uses data binding to dynamically 
+assign CSS classes to a <div> element based on the value of the currentStatus property. 
+This is achieved using Angular's property binding syntax, denoted by the square brackets []. 
+
+Possiamo vedere come facciamo property binding DINAMICO sulla classe e style -->
+
+<!-- stiamo usando i signal perciò ci sono le parentesi -->
+<div
+  [class]="{
+    status: true,
+    'status-online': currentStatus() === 'online',
+    'status-offline': currentStatus() === 'offline',
+    'status-unknown': currentStatus() === 'unknown'
+  }"
+  [style]="{
+    'font-size': '24px',
+}"
+>
+  @if (currentStatus() === 'online') {
+  <p>Servers are online</p>
+  <p>All systems are operational.</p>
+  } @else if (currentStatus() === 'offline') {
+  <p>Servers are offline</p>
+  <p>Functionality should be restored soon.</p>
+  } @else {
+  <p>Server status is unknown</p>
+  <p>Fetching server status failed.</p>
+  }
+</div>

@@ -1,0 +1,9 @@
+<button>
+    <span>
+      <!-- ngcontent permette di fare l'injection di markup nel componente. Si può essere più precisi definendo una casse come fatto di sotto -->
+      <ng-content></ng-content>
+    </span>
+    <span class="icon">
+      <ng-content select=".icon"></ng-content>
+    </span>
+  </button>

@@ -1,0 +1,15 @@
+h1 {
+    color: rgba(165, 8, 8, 0.74);
+    font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+    font-size: 300%;
+    text-align: center;
+}
+
+#grid-list {
+    background:rgba(165, 8, 8, 0.74);
+}
+
+#grid-form {
+    background: rgb(230, 230, 230);
+}
+  

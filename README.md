@@ -118,7 +118,30 @@ export class ParentComponent {
 
 Con `@Input()` e `@Output()`, Angular facilita la comunicazione tra componenti in modo strutturato e modulare. 🚀
 
+### NgContent
+E' una direttiva speciale usata per content projection, ovvero per iniettare contenuto personalizzato all'interno di un componente figlio. In pratica, ng-content permette di creare componenti più riutilizzabili e dinamici, mantenendo la loro struttura flessibile. Ad esempio: 
+```
+<span class="icon">
+  <ng-content select=".icon"></ng-content>
+</span>
 
+...
+POSSIAMO ANCHE PASSARE DUE SELTTORI PER RENDERLO ANCORA PIU UTILIZZABILE
+<ng-content select="[input, textarea]"></ng-content>
+```
+e poi nell-html del componente che importa questo componente, ci faremo riferiemto tramite class per permettere l'ijection precisa
+```
+<button appButton>
+  Logout 
+  <span class="icon">&#x2716;</span>
+</button>
+```
+
+### Dipendency Injection
+
+> private el = inject(ElementRef);
+
+Posto all'interno della classe del componente, permette di accedere direttamente all'elemento DOM nativo associato al componente o alla direttiva, senza dover usare il costruttore.
 
 ### EP. 20 - Creare una direttiva
 Generiamo al direttiva e aggiungiamo l'import in AppModule e anche in declaration
@@ -136,6 +159,27 @@ E' buona prassi non creare componenti con troppe logioche all'interno perché ha
 Poi nel componente in cui vogliamo usufruire del servizio, nel costruttore passiamo il parametro 
 ``` constructor(private servizioProva: ServizioProvaService) { servizioProva.getQualcosa() } ```
 
+### @ViewChild e @ContentChild
+
+I decoratori `@ViewChild` e `@ContentChild` vengono utilizzati in Angular per ottenere riferimenti a elementi del DOM o a componenti figli. 
+
+```@ViewChild('form') form?: ElementRef<HTMLFormElement>;```
+Questo decoratore viene utilizzato per ottenere un riferimento a un elemento figlio presente nel template del componente (View DOM).
+La proprietà form conterrà un riferimento all'elemento <form> con la template reference variable #form.
+È utile per manipolare direttamente il form nel codice TypeScript.
+📌 @ContentChild
+typescript
+Copia
+Modifica
+```@ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;```
+Questo decoratore viene utilizzato per ottenere un riferimento a un elemento figlio che viene proiettato nel componente tramite <ng-content>.
+La proprietà control farà riferimento a un elemento <input> o <textarea> con la template reference variable #input, passato da un altro componente.
+È utile per interagire con contenuti proiettati, ad esempio per applicare comportamenti personalizzati sugli input.
+🔥 Differenza principale
+Decoratore	Dove si applica?	Quando si usa?
+@ViewChild	Elementi nel template del componente	Per accedere e manipolare elementi interni
+@	Elementi forniti da un altro componente (proiezione con <ng-content>)	Per interagire con contenuti proiettati
+
 ### EP.23 - Routing
 Passare da un componente ad un altro. Angular è single page c'è solo index, quindi per spostarsi c'è il routing, fa finta di passare. 
 Il modulo che si occupa di questo è **app-routing.module.ts** che si genera all'inizialòizzazione del progetto se si mette YES, oppure si fa dopo con **ng g module app-routing --flat --module=app**
@@ -148,3 +192,7 @@ Gestisce le autorizzazioni. E' importante per correttezza creare una cartella au
 
 Successivamente si genera la guardia
 > ng g guard auth/auth 
+
+
+### LIFECYCLE
+> https://angular.dev/guide/components/lifecycle
