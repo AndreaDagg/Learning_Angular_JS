@@ -12,4 +12,10 @@ h1 {
 #grid-form {
     background: rgb(230, 230, 230);
 }
-  
+
+.header {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.74);
+    color: rgb(0, 0, 0);
+    text-align: center; 
+}

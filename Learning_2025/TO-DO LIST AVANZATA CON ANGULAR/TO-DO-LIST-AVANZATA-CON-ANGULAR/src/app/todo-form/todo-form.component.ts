@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +23,7 @@ import { TodoitemsService } from '../shared/todoitems.service.ts.service';
 })
 export class TodoFormComponent {
   @Output() submit = new EventEmitter<TodoItem>();
+
 
   idForm!: string;
   titleForm!: string;
