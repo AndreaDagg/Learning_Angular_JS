@@ -7,6 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import type { TodoItem } from '../shared/todo-item.model';
+import type { filterActive } from '../filters/filters.model';
 import { TodoitemsService } from '../shared/todoitems.service.ts.service';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
 export class TodoItemComponent implements OnInit {
   @Input({ required: true }) todoItem!: TodoItem;
   @Output() delete = new EventEmitter<string>();
+
 
   deleteChecked = true;
 
