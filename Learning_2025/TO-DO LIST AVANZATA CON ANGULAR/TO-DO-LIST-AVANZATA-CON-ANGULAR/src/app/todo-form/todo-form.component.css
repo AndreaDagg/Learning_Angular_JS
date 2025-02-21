@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.card {
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.774);
+  border-radius: 3%;
+  
+}
 
 .mat-form-field {
   width: 100%;
@@ -12,9 +18,25 @@
 }
 
 #titloForm{
+  font-size: x-large;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
   font-family: 'Times New Roman', Times, serif;
 }
 
+
+input {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: auto;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background: rgb(255, 255, 255);
+}
 
 

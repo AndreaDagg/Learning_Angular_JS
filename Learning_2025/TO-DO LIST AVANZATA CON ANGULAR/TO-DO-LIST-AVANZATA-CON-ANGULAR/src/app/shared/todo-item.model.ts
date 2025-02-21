@@ -4,5 +4,5 @@ export interface TodoItem {
     title: string;
     description: string;
     done: boolean;
-    category: 'work' | 'family' | 'hobby';
+    category: 'work' | 'family' | 'hobby' | "Categoria";
 }

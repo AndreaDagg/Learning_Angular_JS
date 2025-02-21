@@ -1,23 +1,35 @@
-<h3 id="titloForm">Aggiungi un nuovo ToDo</h3>
-<form (ngSubmit)="onSubmit()">
-  <ul class="form-list">
-    <li>
+  <h3 id="titloForm">Aggiungi un nuovo ToDo</h3>
+  <form (ngSubmit)="onSubmit()" #todoForm>
+    <div class="form-list">
       <p>
-        <input type="text" id="title" name="title" [(ngModel)]="titleForm"/>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="titleForm"
+          placeholder="{{ placeholderTitle }}"
+        />
       </p>
-    </li>
-    <li>
+
       <p>
-        <input type="text" id="title" name="title" [(ngModel)]="categoryForm"/>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="categoryForm"
+          placeholder="{{ placeholderCategory }}"
+        />
       </p>
-    </li>
-    <li>
       <p>
-        <input type="text" id="title" name="title" [(ngModel)]="descriptionForm"/>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="descriptionForm"
+          [placeholder]="placeholderDescription"
+        />
       </p>
-    </li>
-    <li>
-      <button type="submit" [disabled] = 'buttonDisabled'>Aggiungi</button>
-    </li>
-  </ul>
-</form>
+      <button type="submit" [disabled]="buttonDisabled">Aggiungi</button>
+    </div>
+  </form>
+
