@@ -48,8 +48,7 @@ export class TodoItemComponent implements OnInit {
       this.todoitemsService.deleteTodoItem(this.todoItem.id);
       this.delete.emit(this.todoItem.id);
     } else {
-      //TODO: Add a snackbar to notify the user that the item cannot be deleted
-      console.log('You cannot delete an item that is not done');
+      console.log('Non si può eliminare un task non completato');
     }
   }
 }
