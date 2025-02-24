@@ -4,7 +4,7 @@
   [ngStyle]="{ background: todoItem.done ? '#9CCC65' : 'white' }"
 >
   <mat-card-header>
-    <mat-card-title>{{ todoItem.title }}</mat-card-title>
+    <mat-card-title>{{ todoItem.title }} - <small style="font-style: italic;">{{todoItem.category}}</small></mat-card-title>
   </mat-card-header>
 
   <mat-card-content>

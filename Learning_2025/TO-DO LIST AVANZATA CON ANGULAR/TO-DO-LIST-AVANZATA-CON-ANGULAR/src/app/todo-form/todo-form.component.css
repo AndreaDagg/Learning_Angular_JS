@@ -27,16 +27,37 @@
 }
 
 
-input {
+input , select, button {
+  height: 40px;
   justify-content: center;
   align-items: center;
   display: flex;
-  width: auto;
+  width: 100%;
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
   border: 1px solid #ffffff;
   background: rgb(255, 255, 255);
+  resize: auto;
 }
 
+button {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background: rgb(103, 151, 255);
+  cursor: pointer;
+}
+button:active{
+  background: rgb(26, 252, 139);
+  cursor: progress;
+}
+button:disabled {
+  background: rgba(255, 0, 0, 0.527);
+  color: #ffffff; 
+  cursor: not-allowed;
+}
 

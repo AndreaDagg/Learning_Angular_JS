@@ -3,6 +3,8 @@ import {
   Component,
   ElementRef,
   ViewChild,
+  AfterViewChecked,
+  OnInit,
 } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +32,7 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.css',
 })
-export class TodoFormComponent {
+export class TodoFormComponent implements AfterViewChecked, OnInit{
   //@Output() submit = new EventEmitter<TodoItem>();
   @ViewChild('todoForm') todoForm?: ElementRef<HTMLFormElement>;
 
@@ -38,7 +40,7 @@ export class TodoFormComponent {
   titleForm!: string;
   descriptionForm!: string;
   doneForm: boolean = false;
-  categoryForm!: 'work' | 'family' | 'hobby' | 'Categoria';
+  categoryForm!: "work" | "family" | "hobby" | "Categoria";
 
   placeholderTitle = 'Titolo';
   placeholderDescription = 'Note';
@@ -47,6 +49,9 @@ export class TodoFormComponent {
   buttonDisabled = true;
 
   constructor(private todoitemsService: TodoitemsService) {}
+
+  ngOnInit() {
+  }
 
   ngAfterViewChecked() {
     if (

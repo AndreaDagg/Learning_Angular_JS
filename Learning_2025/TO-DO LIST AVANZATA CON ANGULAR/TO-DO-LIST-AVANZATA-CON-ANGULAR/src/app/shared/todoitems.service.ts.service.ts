@@ -90,7 +90,7 @@ export class TodoitemsService {
   saveTodoItems() {
     //localStorage.setItem('todo_db', JSON.stringify(this.todoItems));
     localStorage.setItem('todo_db', JSON.stringify(this.todoItems()));
-    console.log('SERVICE LOG: Saved! ' + this.todoItems().length);
+    console.log('SERVICE LOG: Saved ' + this.todoItems().length);
     this.todoItemsListModify.emit();
   }
 
@@ -100,9 +100,9 @@ export class TodoitemsService {
   }
 
 
-  getTodoItems(): TodoItem[] {
+ /*  getTodoItems(): TodoItem[] {
     return this.todoItems();
-  }
+  } */
 
 
   getFilterActiveList(): TodoItem[] {
@@ -125,6 +125,6 @@ export class TodoitemsService {
       this.todoItemsListModify.emit();
       return [];
     }    
-    
   }
 }
+
