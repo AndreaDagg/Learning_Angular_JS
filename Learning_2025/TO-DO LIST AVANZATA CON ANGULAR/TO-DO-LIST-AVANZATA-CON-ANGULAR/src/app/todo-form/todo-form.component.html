@@ -1,12 +1,12 @@
 <h3 id="titloForm">Aggiungi un nuovo ToDo</h3>
-<form (ngSubmit)="onSubmit()" #todoForm>
+<form (ngSubmit)="onSubmit()" [formGroup]="taskForm" #todoForm>
   <div class="form-list">
     <p>
       <input
         type="text"
         id="title"
         name="title"
-        [(ngModel)]="titleForm"
+        formControlName = "titleForm"
         placeholder="{{ placeholderTitle }}"
       />
     </p>
@@ -16,12 +16,12 @@
         type="textarea"
         id="title"
         name="title"
-        [(ngModel)]="descriptionForm"
+        formControlName = "descriptionForm"
         [placeholder]="placeholderDescription"
       />
     </p>
     <p>
-      <select name="category" [(ngModel)]="categoryForm">
+      <select name="category" formControlName="categoryForm">
         <option value="" disabled selected hidden>Categoria</option>
         <option value="work">Work</option>
         <option value="family">Family</option>

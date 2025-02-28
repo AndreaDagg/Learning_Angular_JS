@@ -1,12 +1,9 @@
-<mat-checkbox
-          class="example-margin"
-          [checked]="filters.filterCompleted"
-          (click)="onFilter('completed')"
-          >Completate</mat-checkbox
-        >
-        <mat-checkbox
-          class="example-margin"
-          [checked]="filters.filterActive"
-          (click)="onFilter('active')"
-          >Attivi</mat-checkbox
-        >
+@if (checkName == "active") {
+<mat-checkbox class="example-margin" [checked]="filters().filterActive">{{
+  checkName
+}}</mat-checkbox>
+} @else {
+<mat-checkbox class="example-margin" [checked]="filters().filterCompleted">{{
+  checkName
+}}</mat-checkbox>
+}
