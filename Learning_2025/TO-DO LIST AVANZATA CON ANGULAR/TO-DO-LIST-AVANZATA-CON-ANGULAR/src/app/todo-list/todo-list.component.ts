@@ -3,11 +3,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { TodoitemsService } from '../shared/todoitems.service.ts.service';
 import { NgFor, CommonModule } from '@angular/common';
 import type { TodoItem } from '../shared/todo-item.model';
 import type { filterActive } from '../filters/filters.model';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BrowserModule } from '@angular/platform-browser';
+import {
+  HttpClientModule,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
+
+import { TodoitemsService } from '../shared/todoitems.service.ts.service';
+import { TodoListService } from './todo-list.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,55 +26,86 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatProgressBarModule,
     TodoItemComponent,
     MatCheckboxModule,
+    HttpClientModule,
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent implements OnInit {
   //todoItemsList: TodoItem[] = this.toDoService.getFilterActiveList();
-  todoItemsList = signal<TodoItem[]>(this.toDoService.getFilterActiveList());
+  //-- CON UNICO SERVICE
+  //todoItemsList = signal<TodoItem[]>(this.toDoService.getFilterActiveList());
+  //-- CON DUE SERVICE SEPARATI
+  //todoItemsList = signal<TodoItem[]>([]);
 
-  
+  todoItemsList!: TodoItem[];
 
-  private filterActive: filterActive = {
-    filterActive: true,
-    filterCompleted: true,
-  };
+  private filterActive = signal<boolean>(true);
+  private filterCompleted = signal<boolean>(true);
 
-  constructor(private toDoService: TodoitemsService) {}
+  constructor(
+    private todoListService: TodoListService,
+    private toDoService: TodoitemsService
+  ) {
+    effect(() => {
+      console.log(
+        'Filter Active: ' +
+          this.filterActive +
+          '\nCompleted:' +
+          this.filterCompleted
+      );
+        
+      this.filterdItems();
 
-  ngOnInit() {
-    //this.todoItemsList = this.toDoService.getFilterActiveList();
-    this.todoItemsList.set(this.toDoService.getFilterActiveList());
-
-    this.toDoService.todoItemsListModify.subscribe(() => {
-      this.todoItemsList.set(this.toDoService.getFilterActiveList());
-    }); 
-
-    /* effect(() => {     
-      
-      this.todoItemsList.set(this.toDoService.getFilterActiveList());
-     }); */
+    });
   }
 
-  deletedItem(id: string) {
-    //this.todoItemsList = this.toDoService.getFilterActiveList();
-    this.todoItemsList.set(this.toDoService.getFilterActiveList());
+  ngOnInit() {
+    this.setItemsList();
+    //debugger
+
+    this.toDoService.todoItemsListModify.subscribe(() => {
+      this.setItemsList();
+    });
+  }
+
+  setItemsList() {
+    this.todoListService.getTodoItems().then((value: unknown) => {
+      const res = value as HttpResponse<any>;
+      console.log(res.body);
+      this.todoItemsList = res.body;
+    });
   }
 
   get filters() {
-    return this.filterActive;
+    return {
+      filterActive: this.filterActive,
+      filterCompleted: this.filterCompleted,
+    };
   }
 
+  //Qua settiamo aggiorniamo i nuovi valori dei filtri
   onFilter(type: 'active' | 'completed') {
+    //console.log(this.filterActive + " " + this.filterCompleted);
     if (type === 'active') {
-      this.filterActive.filterActive = !this.filterActive.filterActive;
-      //console.log( "Active: " + this.filterActive.filterActive + " Completed: " + this.filterActive.filterCompleted);
+      this.filterActive.update((currentValue) => !currentValue);
     } else {
-      this.filterActive.filterCompleted = !this.filterActive.filterCompleted;
-      //console.log( "Active: " + this.filterActive.filterActive + " Completed: " + this.filterActive.filterCompleted);
+      this.filterCompleted.update((currentValue) => !currentValue);
     }
+  }
 
-    this.toDoService.setFilterActive(this.filterActive);
+  filterdItems() {
+    this.todoItemsList = this.todoItemsList.filter((item) => {
+      if (this.filterCompleted) {
+        
+        return item.done === this.filterCompleted();
+      } else if (this.filterActive) {
+         
+        return item.done === this.filterActive();
+      } else {
+        
+        return item;
+      }
+    });
   }
 }

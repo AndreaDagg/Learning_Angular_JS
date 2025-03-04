@@ -23,11 +23,11 @@ public class Item {
 	@Column(name = "CATEGORY")
 	private String category;
 	@Column(name = "DONE")
-	private String done; 
+	private Boolean done; 
 	
 	public Item() {}
 	
-	public Item(String title, String description, String category) {
+	public Item(String title, String description, String category, Boolean done) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -62,11 +62,11 @@ public class Item {
 	}
 	
 
-	public String getDone() {
+	public Boolean getDone() {
 		return done;
 	}
 
-	public void setDone(String done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
 

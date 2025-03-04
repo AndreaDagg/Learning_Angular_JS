@@ -26,5 +26,16 @@ public class ItemService {
 	public Item getItemById(Integer id) {
 		return itemRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
 	}
+	
+	public void updateDoneItem(Integer id, Boolean done) {
+		Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
+		item.setDone(done);
+		itemRepository.save(item);
+		
+	}
+	
+	public void deleteItem(Integer id) {
+		Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
+		itemRepository.delete(item);
+	}
 }
-

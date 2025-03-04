@@ -19,18 +19,17 @@
     </mat-card-header>
     <mat-card-content>
       <!-- TODO: itera sulla lista delle attività -->
-      @if (todoItemsList().length == 0) {
+      @if (todoItemsList.length == 0) {
       <p>Non ci sono attività da mostrare</p>
       <img
         src="../../assets/img/2530837_brochure_document_menu_note_office_icon.png"
         alt="Empty list"
       />
-      } @else { @for (item of todoItemsList().slice().reverse(); track item.id)
+      } @else { @for (item of todoItemsList.slice().reverse(); track item.id)
       {
 
       <app-todo-item
         [todoItem]="item"
-        (delete)="deletedItem($event)"
       ></app-todo-item>
 
       } }

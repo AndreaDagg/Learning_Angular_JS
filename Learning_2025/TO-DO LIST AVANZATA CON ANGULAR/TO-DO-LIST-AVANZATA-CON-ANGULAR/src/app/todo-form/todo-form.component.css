@@ -7,27 +7,27 @@
   max-width: 100%;
   background: rgba(255, 255, 255, 0.774);
   border-radius: 3%;
-  
 }
 
 .mat-form-field {
   width: 100%;
-  height: 100%;
-  margin-top: 100%;
+  height: auto;
+  margin-top: 10px;
   padding: 0;
 }
 
-#titloForm{
+#titloForm {
   font-size: x-large;
   text-align: center;
   align-items: center;
   justify-content: center;
   display: flex;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
-
-input , select, button {
+input,
+select,
+button {
   height: 40px;
   justify-content: center;
   align-items: center;
@@ -51,13 +51,12 @@ button {
   background: rgb(103, 151, 255);
   cursor: pointer;
 }
-button:active{
+button:active {
   background: rgb(26, 252, 139);
   cursor: progress;
 }
 button:disabled {
   background: rgba(255, 0, 0, 0.527);
-  color: #ffffff; 
+  color: #ffffff;
   cursor: not-allowed;
 }
-
