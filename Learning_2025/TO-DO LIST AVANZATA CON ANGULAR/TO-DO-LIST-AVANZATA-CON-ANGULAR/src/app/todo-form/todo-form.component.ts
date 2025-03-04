@@ -1,3 +1,4 @@
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,12 +11,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { TodoItem } from '../shared/todo-item.model';
-import { FormsModule } from '@angular/forms';
+import { TodoItemNoID } from '../shared/todo-item-noID.model';
+import { ReactiveFormsModule, FormGroup, FormControl, FormsModule } from '@angular/forms';
 import { TodoitemsService } from '../shared/todoitems.service.ts.service';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
+import { TodoFormService } from './todo-form.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -27,66 +29,59 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     CommonModule,
     MatCardModule,
+    ReactiveFormsModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.css',
 })
-export class TodoFormComponent implements AfterViewChecked, OnInit{
+export class TodoFormComponent implements OnInit{
   //@Output() submit = new EventEmitter<TodoItem>();
   @ViewChild('todoForm') todoForm?: ElementRef<HTMLFormElement>;
 
-  idForm!: string;
-  titleForm!: string;
-  descriptionForm!: string;
+  idForm!: string;  
   doneForm: boolean = false;
-  categoryForm!: "work" | "family" | "hobby" | "Categoria";
-
+ 
+  taskForm = new FormGroup({
+    titleForm: new FormControl<string>('', { nonNullable: true }),
+    descriptionForm: new FormControl<string>('', { nonNullable: true }),
+    categoryForm: new FormControl<'work' | 'family' | 'hobby' | "Categoria">('Categoria', { nonNullable: true }),
+  });
+  
+  
+  
   placeholderTitle = 'Titolo';
   placeholderDescription = 'Note';
   placeholderCategory = 'Categoria';
 
   buttonDisabled = true;
 
-  constructor(private todoitemsService: TodoitemsService) {}
+  constructor(private todoFormService: TodoFormService) {}
 
   ngOnInit() {
+    this.taskForm.valueChanges.subscribe((values) => {
+      const allFieldsModified =
+        values.titleForm !== '' &&
+        values.descriptionForm !== '' &&
+        values.categoryForm !== 'Categoria';
+  
+      this.buttonDisabled = !allFieldsModified;
+    });
   }
-
-  ngAfterViewChecked() {
-    if (
-      this.titleForm &&
-      this.titleForm != this.placeholderTitle &&
-      this.descriptionForm &&
-      this.descriptionForm != this.placeholderDescription &&
-      this.categoryForm &&
-      this.categoryForm != this.placeholderTitle
-    ) {
-      this.buttonDisabled = false;
-    } else {
-      this.buttonDisabled = true;
-    }
-  }
+  
 
   onSubmit() {
-    const toDoItem: TodoItem = {
-      id: new Date().getTime().toString(),
-      title: this.titleForm,
-      description: this.descriptionForm,
+    const toDoItem: TodoItemNoID = {
+      title: this.taskForm.get('titleForm')?.value || '',
+      description: this.taskForm.get('descriptionForm')?.value || '',
       done: false,
-      category: this.categoryForm,
+      category: this.taskForm.get('categoryForm')?.value as 'Categoria' | 'work' | 'family' | 'hobby',
     };
-
-    //console.log('Form submitted with id: ' + toDoItem.id + ' title: ' + toDoItem.title + ' description: ' + toDoItem.description + ' done: ' + toDoItem.done + ' category: ' + toDoItem.category);
-
-    //this.submit.emit(toDoItem);
-
-    this.addNewTodoItem(toDoItem);
+    
+    //this.todoitemsService.addTodoItem(toDoItem);
+    this.todoFormService.addNewItemQuery(toDoItem);
+    this.taskForm.reset();
   }
-
-  addNewTodoItem(todoItem: TodoItem) {
-    this.todoitemsService.addTodoItem(todoItem);
-    this.todoForm?.nativeElement.reset();
-    this.buttonDisabled = true;
-  }
+  
+ 
 }
