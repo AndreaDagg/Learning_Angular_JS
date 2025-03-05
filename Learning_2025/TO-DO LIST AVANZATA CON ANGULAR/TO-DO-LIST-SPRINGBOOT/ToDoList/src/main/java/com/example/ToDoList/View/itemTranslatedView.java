@@ -23,7 +23,7 @@ public class itemTranslatedView {
     @Column(name = "TITLE", nullable = false)
     private String title; 
     @Column(name = "DESCRIPTION", nullable = false)
-    private String decsription;
+    private String description;
     @Column(name = "CATEGORY", nullable = false)
     private String category;
     @Column(name = "DONE", nullable = false)
@@ -40,7 +40,7 @@ public class itemTranslatedView {
     public itemTranslatedView(Integer id, String title, String decsription, String category, boolean done) {
         this.id = id;
         this.title = title;
-        this.decsription = decsription;
+        this.description = decsription;
         this.category = category;
         this.done = done;
     }
@@ -57,11 +57,11 @@ public class itemTranslatedView {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getDecsription() {
-        return decsription;
+    public String getDescription() {
+        return description;
     }
-    public void setDecsription(String decsription) {
-        this.decsription = decsription;
+    public void setDescription(String decsription) {
+        this.description = decsription;
     }
     public String getCategory() {
         return category;
@@ -82,7 +82,7 @@ public class itemTranslatedView {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
-        result = prime * result + ((decsription == null) ? 0 : decsription.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + (done ? 1231 : 1237);
         return result;
@@ -107,10 +107,10 @@ public class itemTranslatedView {
                 return false;
         } else if (!title.equals(other.title))
             return false;
-        if (decsription == null) {
-            if (other.decsription != null)
+        if (description == null) {
+            if (other.description != null)
                 return false;
-        } else if (!decsription.equals(other.decsription))
+        } else if (!description.equals(other.description))
             return false;
         if (category == null) {
             if (other.category != null)
