@@ -3,6 +3,7 @@ import type { TodoItem } from './todo-item.model';
 import type { TodoItemNoID } from './todo-item-noID.model';
 import type { filterActive } from '../filters/filters.model';
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,12 @@ export class TodoitemsService {
 
   @Output() todoItemsListModify = new EventEmitter<void>();
 
-
+  /**
+   * An observable that emits the current language setting.
+   * This observable is derived from the `languageSubject` and can be used to subscribe to language changes.
+   * Default false -> Italiano
+   */
+  private isEnglish: boolean = (false);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -98,4 +104,14 @@ export class TodoitemsService {
         throw msg;
       });
   }
+
+  setLanguage(isEnglish: boolean) {
+    this.isEnglish = isEnglish // Aggiorna il valore della lingua
+    this.todoItemsListModify.emit(); // Notifica il cambiamento
+  }
+
+  getLanguage() {
+    return this.isEnglish;
+  }
+
 }
