@@ -16,4 +16,7 @@ spring.h2.console.enabled=true
 - Run as -> Maven install
 - Rus as -> Java Application 
 
+
+su vs code o da terminale si può avviare tramite mvn spring-boot:run
+
 navigare: http://localhost:8080/h2-console

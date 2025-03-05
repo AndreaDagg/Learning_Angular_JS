@@ -1,1 +1,7 @@
-<h1> Toolbar </h1>
+<p>
+    <mat-slide-toggle [(ngModel)]="isEnglishItems" (click) = "setLanguage()">
+        {{isEnglishItems ? 'English Items' : 'Italian Items'}}
+    </mat-slide-toggle>
+</p>
+  
+  

@@ -45,9 +45,9 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     private todoListService: TodoListService,
-    private toDoService: TodoitemsService
+    private toDoService: TodoitemsService,
   ) {
-    effect(() => {
+    /* effect(() => {
       console.log(
         'Filter Active: ' +
           this.filterActive +
@@ -57,7 +57,7 @@ export class TodoListComponent implements OnInit {
         
       this.filterdItems();
 
-    });
+    }); */
   }
 
   ngOnInit() {
@@ -67,6 +67,8 @@ export class TodoListComponent implements OnInit {
     this.toDoService.todoItemsListModify.subscribe(() => {
       this.setItemsList();
     });
+
+   
   }
 
   setItemsList() {

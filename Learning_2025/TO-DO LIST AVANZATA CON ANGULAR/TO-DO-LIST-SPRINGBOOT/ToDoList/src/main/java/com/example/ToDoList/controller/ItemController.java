@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ToDoList.View.itemTranslatedView;
 import com.example.ToDoList.model.Item;
 
 @RestController
@@ -28,6 +29,11 @@ public class ItemController {
 	@GetMapping
 	public List<Item> getItems(){
 		return itemService.getItems();
+	}
+
+	@GetMapping("/translatedItems")
+	public List<itemTranslatedView> getItemsTranslated(){
+		return itemService.getItemsTranslated();
 	}
 	
 	@GetMapping("{id}")
