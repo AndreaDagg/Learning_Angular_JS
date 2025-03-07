@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.ToDoList.View.itemTranslatedView;
+import com.example.ToDoList.dto.ItemDTO;
 import com.example.ToDoList.dto.ItemUpdateDTO;
 import com.example.ToDoList.model.Item;
 import com.example.ToDoList.model.itemTranslate;
@@ -21,6 +22,17 @@ public class ItemService {
 		this.itemTranslatedViewRepository = itemTranslatedViewRepository;
 	}
 	
+	public List<ItemDTO> all(ItemDTO entity) {
+
+		if (entity.isEnglish()) {
+			// creare predicato in specification per andare verso la vista			
+		} else {
+			// creare predicato in specification per andare verso la tabella
+		}
+
+		return null; 
+	}
+
 	public List<Item> getItems(){
 		return itemRepository.findAll();
 	}

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ToDoList.View.itemTranslatedView;
+import com.example.ToDoList.dto.ItemDTO;
 import com.example.ToDoList.dto.ItemUpdateDTO;
 import com.example.ToDoList.model.Item;
 
@@ -31,6 +32,12 @@ public class ItemController {
 	public List<Item> getItems(){
 		return itemService.getItems();
 	}
+
+	@PostMapping("/all")
+	public List<ItemDTO> all(@RequestBody ItemDTO entity) {	
+		return itemService.all(entity);
+	}
+	
 
 	@PostMapping("/translatedItems")
 	public List<itemTranslatedView> getItemsTranslated(){
