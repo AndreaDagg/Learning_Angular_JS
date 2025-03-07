@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.ToDoList.View.itemTranslatedView;
+import com.example.ToDoList.dto.ItemUpdateDTO;
 import com.example.ToDoList.model.Item;
 import com.example.ToDoList.model.itemTranslate;
 import com.example.ToDoList.repository.ItemRepository;
@@ -36,11 +37,12 @@ public class ItemService {
 		return itemRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
 	}
 	
-	public void updateDoneItem(Integer id, Boolean done) {
+	public void updateDoneItem(ItemUpdateDTO itemUpdateDTO) {
+		Integer id = itemUpdateDTO.getId();
+		Boolean done = itemUpdateDTO.getDone();
 		Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalStateException(id + "not found"));
 		item.setDone(done);
 		itemRepository.save(item);
-		
 	}
 	
 	public void deleteItem(Integer id) {

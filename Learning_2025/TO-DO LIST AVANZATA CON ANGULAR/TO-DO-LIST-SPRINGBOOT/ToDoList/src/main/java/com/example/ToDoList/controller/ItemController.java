@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ToDoList.View.itemTranslatedView;
+import com.example.ToDoList.dto.ItemUpdateDTO;
 import com.example.ToDoList.model.Item;
 
 @RestController
@@ -46,14 +47,18 @@ public class ItemController {
 		itemService.insertItem(item); 
 	}
 	
+	/*
+	 * Utilizzo un DTO per fare l'update di un solo campo
+	 */
 	@PutMapping("/updateDone")
-	public void updateDoneItem(@RequestParam Integer id, @RequestParam Boolean done) {
-		itemService.updateDoneItem(id, done);
+	public void updateDoneItem(@RequestBody ItemUpdateDTO itemUpdateDTO) {
+		itemService.updateDoneItem(itemUpdateDTO);
 	}
 	
 	@DeleteMapping("/deleteItem")
-	public void deleteItem(@RequestParam Integer id) {
+	public void deleteItem(@RequestBody Integer id) {
 		itemService.deleteItem(id);
 	}
+
 
 }
