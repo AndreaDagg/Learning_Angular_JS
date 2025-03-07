@@ -1,10 +1,7 @@
 import { EventEmitter, Injectable, Output, signal, Input } from '@angular/core';
 import type { TodoItem } from './todo-item.model';
-import type { TodoItemNoID } from './todo-item-noID.model';
-import type { filterActive } from '../filters/filters.model';
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root',
