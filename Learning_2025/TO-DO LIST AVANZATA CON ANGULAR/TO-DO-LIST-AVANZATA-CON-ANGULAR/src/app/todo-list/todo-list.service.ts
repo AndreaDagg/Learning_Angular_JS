@@ -14,9 +14,10 @@ export class TodoListService {
    */
   getTodoItems() {
     if (this.todoItemsService.getLanguage()) {
-      return this.todoItemsService.doHttpRequest('itemController/translatedItems');
+      //TODO: Implementare la chiamata alla view
+      return this.todoItemsService.doHttpRequest_UNICA("POST", "itemController");
     } else {
-      return this.todoItemsService.doHttpRequest('itemController');
+      return this.todoItemsService.doHttpRequest_UNICA("POST", "itemController");
     }
   }
 }

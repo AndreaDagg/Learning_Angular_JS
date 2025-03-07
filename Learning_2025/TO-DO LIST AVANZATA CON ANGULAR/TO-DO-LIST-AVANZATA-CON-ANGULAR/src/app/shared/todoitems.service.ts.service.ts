@@ -4,6 +4,7 @@ import type { TodoItemNoID } from './todo-item-noID.model';
 import type { filterActive } from '../filters/filters.model';
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -26,8 +27,9 @@ export class TodoitemsService {
   //--- CHIAMATA GENERICA
   doHttpRequest(table: String) {
     let httpRequest = new HttpRequest(
-      'GET',
-      'http://localhost:8080/api/' + table
+      'POST',
+      'http://localhost:8080/api/' + table, 
+      null
     );
     return new Promise((resolve, reject) => {
       //L'oggetto rq devo utilizzarlo come parametro della richiesta della funzione request dell'http client
@@ -64,6 +66,12 @@ export class TodoitemsService {
       });
   }
 
+  /**
+   * 
+   * @param table la path della tabella 
+   * @param todoItemNoID l'oggetto da aggiungere alla tabella viene passato nel body della richiesta non nella path (in spring è un parametro @RequestBody)
+   * @returns la promise della richiesta http
+   */
   doHttpRequestAddNewItem(table: string, todoItemNoID: TodoItemNoID) {
     const url = `http://localhost:8080/api/${table}/addNewItem`;
     return this.httpClient
@@ -90,20 +98,7 @@ export class TodoitemsService {
       });
   }
 
-  doHttpRequestDelete(table: string, id: number) {
-    const url = `http://localhost:8080/api/${table}/deleteItem?id=${id}`;
-    return this.httpClient
-      .delete(url)
-      .toPromise()
-      .then((res) => {
-        console.log('SERVICE LOG: Deleted todo item with id: ' + id);
-        this.todoItemsListModify.emit();
-        return res;
-      })
-      .catch((msg) => {
-        throw msg;
-      });
-  }
+
 
   setLanguage(isEnglish: boolean) {
     this.isEnglish = isEnglish // Aggiorna il valore della lingua
@@ -112,6 +107,64 @@ export class TodoitemsService {
 
   getLanguage() {
     return this.isEnglish;
+  }
+
+  public doHttpRequest_UNICA(paramMethod: string, urlEndpoint: string,
+    dataParam?: Object, headers?: Array<{ key: string, value: string }>,
+    paramResponseType?: 'arraybuffer' | 'blob' | 'json' | 'text', doUpdate?: boolean): Promise<any> {
+ 
+    console.log("SERVICE GENERAL => doHttpRequest_UNICA");
+ 
+    let host: string = 'http://localhost:8080/api/';
+ 
+    let uri = host + urlEndpoint;
+ 
+    /* if (this.userAgentSrv.browser.toUpperCase() === 'IE') {
+      if (uri.indexOf('?') !== -1) {
+        uri += '&cache=' + new Date().getTime();
+      } else {
+        uri += '?cache=' + new Date().getTime();
+      }
+ 
+    }
+    if (environment.mock) {
+      uri += '.json';
+      paramMethod = 'GET';
+    } */
+ 
+    let httpRequest = new HttpRequest(paramMethod, uri, dataParam, { responseType: (paramResponseType || 'json') });
+ 
+    if (headers && headers.length > 0) {
+      headers.map((item) => {
+        httpRequest = httpRequest.clone({
+          headers: httpRequest.headers.set(item.key, item.value)
+        });
+      });
+    } else {
+      httpRequest = httpRequest.clone({
+        headers: httpRequest.headers.set("Content-Type", "application/json")
+      });
+    }
+  
+
+    return new Promise((resolve, reject) => {
+      const rq = this.httpClient.request(httpRequest);
+      if (rq) {
+        rq.toPromise().then(
+          res => { // Success
+            resolve(res);
+            //Se la chiamata è andata a buon fine, notifico il cambiamento che aggiorna la schermata
+            if (doUpdate) {
+              this.todoItemsListModify.emit();
+            }
+          },
+          msg => { // Error
+            reject(msg);
+          }
+        );
+      }
+ 
+    });
   }
 
 }

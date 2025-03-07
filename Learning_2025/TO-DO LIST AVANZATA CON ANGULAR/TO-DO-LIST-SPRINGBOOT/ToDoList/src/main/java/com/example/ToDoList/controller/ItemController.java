@@ -26,17 +26,17 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService; 
 	
-	@GetMapping
+	@PostMapping
 	public List<Item> getItems(){
 		return itemService.getItems();
 	}
 
-	@GetMapping("/translatedItems")
+	@PostMapping("/translatedItems")
 	public List<itemTranslatedView> getItemsTranslated(){
 		return itemService.getItemsTranslated();
 	}
 	
-	@GetMapping("{id}")
+	@PostMapping("{id}")
 	public Item getItemsById(@PathVariable Integer id){
 		return itemService.getItemById(id);
 	}
